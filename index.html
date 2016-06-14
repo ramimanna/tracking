@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>tracking.js - first tracking</title>
   <script src="js/vendor/tracking-min.js"></script>
+  <script src="js/vendor/data/face-min.js"></script>
 </head>
 <body>
 <div id="container">
@@ -27,7 +28,19 @@
     }
   });
 
-  tracking.track('#myVideo', colors);
+  var objects = new tracking.ObjectTracker(['face', 'eye', 'mouth']);
+
+  objects.on('track',function(event){
+    if(event.data.length === 0) {
+      //No objects were detected in this frame.
+    } else {
+      event.data.forEach(function(rect){
+        console.log(rect.x, rect.y, rect.height, rect.width, rect.color);        
+      });
+    }
+  });
+
+  tracking.track('#myVideo', objects);
   </script>
 </body>
 </html>
