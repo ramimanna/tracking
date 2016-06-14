@@ -9,9 +9,6 @@
 </head>
 <body>
     <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000; border-radius:10px;"></canvas>
-<!--     <video id="sampleVideo" controls>
-      <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
-    </video> -->
 
     <video autoplay="true" id="myVideo" width="400" height="300" preload autoplay loop muted>
     </video>
@@ -21,7 +18,10 @@
   <script>
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
 
+  
   var colors = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
 
   colors.on('track', function(event) {
@@ -41,7 +41,9 @@
       //No objects were detected in this frame.
     } else {
       event.data.forEach(function(rect){
-        console.log(rect.x, rect.y, rect.height, rect.width, rect.color);        
+        console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
+        ctx.rect(rect.x,rect.y,rect.width,rect.height);
+        ctx.stroke();        
       });
     }
   });
