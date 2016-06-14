@@ -2,7 +2,7 @@
 #feed {
     display: none;
 }
-#sampleVideo, #myCanvas {
+#myVideo, #myCanvas {
     position: absolute;
     top: 50%;
     left: 50%;
