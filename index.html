@@ -9,16 +9,12 @@
 <body>
 <div id="container">
     <canvas id="myCanvas" width="400" height="300" style="border:1px solid #000; border-radius:10px;"></canvas>
-    <video controls>
+    <video id="sampleVideo" controls>
       <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
     </video>
-<!--     <video id="shadenVideo" controls preload autostart>
-      <source src="https://github.com/ramimanna/tracking/blob/gh-pages/assets%20/Shaden.mp4" type="video/mp4">
-    </video> -->
+
     <video autoplay="true" id="myVideo" width="400" height="300" preload autoplay loop muted>
     </video>
-<!--     <video src = "shaden.mp4" autoplay="true" width="400" height="300" preload autoplay loop muted></video>
- -->
 </div>
 
 <style rel="stylesheet" type = "text/css" href="css/style.css"></style>
@@ -31,7 +27,7 @@ var context=canvas.getContext("2d");
 var cw,ch;
 
 // reference to video element
-var v = document.getElementById('shadenVideo');
+var v = document.getElementById('sampleVideo');
 
 // wait until video metadata is loaded
 v.addEventListener( "loadedmetadata", function(e){
