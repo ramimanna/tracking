@@ -21,45 +21,6 @@
 <script src="video.js" type="text/javascript"></script> 
 
   <script>
-// reference to canvas and context
-var canvas=document.getElementById("myCanvas");
-var context=canvas.getContext("2d");
-var cw,ch;
-
-// reference to video element
-var v = document.getElementById('sampleVideo');
-
-// wait until video metadata is loaded
-v.addEventListener( "loadedmetadata", function(e){
-
-    // set the canvas size to the video size
-    cw=canvas.width=v.videoWidth;
-    ch=canvas.height=v.videoHeight;
-
-    // listen for when user presses play
-    v.addEventListener('play', function(){
-        // start loop that displays video frames on canvas
-        requestAnimationFrame(animate);
-    },false);
-
-}, false );   
-
-// loop that displays video frames on canvas
-function animate(time){
-
-    // stop the loop if user stops video
-    if(v.paused || v.ended){ return; }
-
-    // draw the 1 current video frame on the canvas
-    context.drawImage(v,0,0,cw,ch);
-
-    // also draw your image on the canvas
-    context.drawImage(img,0,0);
-
-    // request another loop 
-    requestAnimationFrame(animate);
-
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
