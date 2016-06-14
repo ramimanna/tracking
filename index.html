@@ -28,7 +28,7 @@
     }
   });
 
-  var objects = new tracking.ObjectTracker(['face']);
+  var objects = new tracking.ObjectTracker("face");
 
   objects.on('track',function(event){
     if(event.data.length === 0) {
