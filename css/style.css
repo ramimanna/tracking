@@ -9,6 +9,15 @@
     height: 750px;
     border: 10px #333 solid;
 }
+
+#myVideo{
+	position: absolute;
+}
+
+#myCanvas{
+	position: absolute;
+}
+
 /*#myVideo {
     width: 1000px;
     height: 750px;
