@@ -1,0 +1,16 @@
+#webcam,
+#feed {
+    display: none;
+}
+
+#container {
+    margin: 0px auto;
+    width: 1000px;
+    height: 750px;
+    border: 10px #333 solid;
+}
+#videoElement {
+    width: 1000px;
+    height: 750px;
+    background-color: #666;
+}
