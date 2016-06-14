@@ -2,25 +2,11 @@
 #feed {
     display: none;
 }
-
-#container {
-    margin: 0px auto;
-    width: 1000px;
-    height: 750px;
-    border: 10px #333 solid;
-}
-
-#sampleVideo{
-	position: absolute;
-	top:0;
-	left:0;
-}
-
-#myCanvas{
-	position: absolute;
-	top:0;
-	left:0;
-}
+video, canvas {
+    margin-left: 230px;
+    margin-top: 120px;
+    position: absolute;
+  }
 
 /*#myVideo {
     width: 1000px;
