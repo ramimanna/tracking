@@ -12,10 +12,14 @@
 
 #myVideo{
 	position: absolute;
+	top:0;
+	left:0;
 }
 
 #myCanvas{
 	position: absolute;
+	top:0;
+	left:0;
 }
 
 /*#myVideo {
