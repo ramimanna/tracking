@@ -18,18 +18,18 @@
   // });
   ctx.lineWidth="1";
   ctx.strokeStyle="purple";
-  var face_tracker = new tracking.ObjectTracker(["face","mouth","eye"]);
+  var objects = new tracking.ObjectTracker(["face","mouth","eye"]);
 
-  face_tracker.setInitialScale(4);
-  face_tracker.setStepSize(2);
-  face_tracker.setEdgesDensity(0.1);
+  objects.setInitialScale(4);
+  objects.setStepSize(2);
+  objects.setEdgesDensity(0.1);
 
-  face_tracker.on('track',function(event){
+  objects.on('track',function(event){
     if(event.data.length === 0) {
         ctx.clearRect(0,0,c.width,c.height);
     } else {
       event.data.forEach(function(rect){
-        ctx.clearRect(0,0,c.width,c.height);
+        //ctx.clearRect(0,0,c.width,c.height);
         ctx.beginPath();
         ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
@@ -37,4 +37,4 @@
     }
   });
 
-  tracking.track('#myVideo', face_tracker);
+  tracking.track('#myVideo', objects);
