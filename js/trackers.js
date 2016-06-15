@@ -37,4 +37,4 @@
     }
   });
 
-  tracking.track('#myVideo', objects);
+  tracking.track('#myVideo', face_tracker);
