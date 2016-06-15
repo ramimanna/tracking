@@ -43,6 +43,7 @@
       event.data.forEach(function(rect){
         console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
         console.log("hi");
+        ctx.clearRect(0,0,c.width,c.height);
         ctx.beginPath();
         ctx.lineWidth="1";
         ctx.strokeStyle="purple";
