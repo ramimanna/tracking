@@ -25,11 +25,11 @@
   objects.setEdgesDensity(0.1);
 
   objects.on('track',function(event){
+    ctx.clearRect(0,0,c.width,c.height);    
     if(event.data.length === 0) {
-        ctx.clearRect(0,0,c.width,c.height);
+      //Nothing
     } else {
       event.data.forEach(function(rect){
-        //ctx.clearRect(0,0,c.width,c.height);
         ctx.beginPath();
         ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
