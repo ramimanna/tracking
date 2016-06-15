@@ -18,24 +18,18 @@
   // });
   ctx.lineWidth="1";
   ctx.strokeStyle="purple";
-  var objects = new tracking.ObjectTracker(["face","mouth"]);
+  var face_tracker = new tracking.ObjectTracker("face");
 
-  objects.setInitialScale(4);
-  objects.setStepSize(2);
-  objects.setEdgesDensity(0.1);
+  face_tracker.setInitialScale(4);
+  face_tracker.setStepSize(2);
+  face_tracker.setEdgesDensity(0.1);
 
-  objects.on('track',function(event){
-    ctx.clearRect(0,0,c.width,c.height);    
+  face_tracker.on('track',function(event){
     if(event.data.length === 0) {
-      //Nothing
+        ctx.clearRect(0,0,c.width,c.height);
     } else {
-      event.data.forEach(function(rect, i){
-        if(i==0){
-          ctx.strokeStyle="purple";
-        }
-        if(i==1){
-          ctx.strokeStyle="orange";
-        }
+      event.data.forEach(function(rect){
+        ctx.clearRect(0,0,c.width,c.height);
         ctx.beginPath();
         ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
@@ -43,4 +37,4 @@
     }
   });
 
-  tracking.track('#myVideo', objects);
+  tracking.track('#myVideo', face_tracker);
