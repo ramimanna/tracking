@@ -42,6 +42,9 @@
     } else {
       event.data.forEach(function(rect){
         console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
+        ctx.beginPath();
+        ctx.lineWidth="6";
+        ctx.strokeStyle="red";
         ctx.rect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
       });
