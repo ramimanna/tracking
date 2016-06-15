@@ -18,7 +18,7 @@
   // });
   ctx.lineWidth="1";
   ctx.strokeStyle="purple";
-  var face_tracker = new tracking.ObjectTracker("face");
+  var face_tracker = new tracking.ObjectTracker(["face","mouth","eye"]);
 
   face_tracker.setInitialScale(4);
   face_tracker.setStepSize(2);
