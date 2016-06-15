@@ -25,8 +25,8 @@
   face_tracker.setEdgesDensity(0.1);
 
   face_tracker.on('track',function(event){
+    ctx.clearRect(0,0,c.width,c.height);
     if(event.data.length === 0) {
-        ctx.clearRect(0,0,c.width,c.height);
     } else {
       event.data.forEach(function(rect){
         ctx.clearRect(0,0,c.width,c.height);
