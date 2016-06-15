@@ -36,9 +36,6 @@
         if(i==1){
           ctx.strokeStyle="orange";
         }
-        // if(i==2){
-        //   ctx.strokeStyle="green";
-        // }
         ctx.beginPath();
         ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
