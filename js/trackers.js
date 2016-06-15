@@ -1,7 +1,10 @@
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
 
+  // var tacking_canvas = new Canvas();
   
+  //---------------------------------------------------------------------//      
+
   // var colors = new tracking.ColorTracker(['magenta', 'cyan', 'yellow']);
 
   // colors.on('track', function(event) {
@@ -15,16 +18,20 @@
   // });
   ctx.lineWidth="1";
   ctx.strokeStyle="purple";
-  var objects = new tracking.ObjectTracker("face");
+  var face_tracker = new tracking.ObjectTracker("face");
 
-  objects.on('track',function(event){
+  // face_tracker.setInitialScale(4);
+  // face_tracker.setStepSize(2);
+  // face_tracker.setEdgesDensity(0.1);
+
+  face_tracker.on('track',function(event){
     if(event.data.length === 0) {
         ctx.clearRect(0,0,c.width,c.height);
     } else {
       event.data.forEach(function(rect){
         ctx.clearRect(0,0,c.width,c.height);
         ctx.beginPath();
-        ctx.rect(rect.x,rect.y,rect.width,rect.height);
+        ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
       });
     }
