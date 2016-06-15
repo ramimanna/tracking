@@ -29,7 +29,16 @@
     if(event.data.length === 0) {
       //Nothing
     } else {
-      event.data.forEach(function(rect){
+      event.data.forEach(function(rect, i){
+        if(i==0){
+          ctx.strokeStyle="purple";
+        }
+        if(i==1){
+          ctx.strokeStyle="orange";
+        }
+        if(i==2){
+          ctx.strokeStyle="green";
+        }
         ctx.beginPath();
         ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         ctx.stroke();        
