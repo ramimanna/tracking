@@ -20,9 +20,9 @@
   ctx.strokeStyle="purple";
   var face_tracker = new tracking.ObjectTracker("face");
 
-  // face_tracker.setInitialScale(4);
-  // face_tracker.setStepSize(2);
-  // face_tracker.setEdgesDensity(0.1);
+  face_tracker.setInitialScale(4);
+  face_tracker.setStepSize(2);
+  face_tracker.setEdgesDensity(0.1);
 
   face_tracker.on('track',function(event){
     if(event.data.length === 0) {
