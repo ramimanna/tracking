@@ -38,7 +38,7 @@
 
   objects.on('track',function(event){
     if(event.data.length === 0) {
-      //No objects were detected in this frame.
+        ctx.clearRect(0,0,c.width,c.height);
     } else {
       event.data.forEach(function(rect){
         console.log(rect.x, rect.y, rect.height, rect.width, rect.color);
