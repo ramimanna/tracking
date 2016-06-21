@@ -3,8 +3,7 @@
     display: none;
 }
 #myVideo, #myCanvas {
-    width:auto;
-    height:100vh;
+    zoom:200%;
     position: absolute;
     top: 50%;
     left: 50%;
