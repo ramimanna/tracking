@@ -21,8 +21,14 @@ document.addEventListener('DOMContentLoaded', function(){
     var ch = Math.floor(canvas.clientHeight);
     canvas.width = cw;
     canvas.height = ch;
-    img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8_t | jsfeat.C1_t);
-    img_gxgy = new jsfeat.matrix_t(cw, ch, jsfeat.S32C2_t);
+    if (filter=="grayscale" || filter == "scharr"){
+      img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8_t | jsfeat.C1_t);
+      img_gxgy = new jsfeat.matrix_t(cw, ch, jsfeat.S32C2_t);      
+    }
+    else if(filter == "sobel"){
+      img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8C1_t);
+      img_gxgy = new jsfeat.matrix_t(cw, ch, jsfeat.S32C2_t);
+    }
 
     video.addEventListener('playing', function(){
         draw(this,canvas_context,back_context,cw,ch);
