@@ -24,10 +24,22 @@ document.addEventListener('DOMContentLoaded', function(){
 
 },false);
 
-function draw(v,c,w,h) {
+function draw(v,ctx,w,h) {
     if(v.paused || v.ended) return false;
-    c.drawImage(v,0,0,w,h);
-    setTimeout(draw,20,v,c,w,h);
+    var image_data = video_ctx.getImageData(0, 0, cw, ch);
+    var data = image_data.data;
+    for(var i = 0; i < data.length; i+=4) {
+        var r = data[i];
+        var g = data[i+1];
+        var b = data[i+2];
+        var brightness = (3*r+4*g+b)>>>3;
+        data[i] = brightness;
+        data[i+1] = brightness;
+        data[i+2] = brightness;
+    }
+    image_data.data = data;
+    ctx.putImageData(idata,0,0);
+    setTimeout(draw,20,v,ctx,w,h);
 }
 
   // var tacking_canvas = new Canvas();
