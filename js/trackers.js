@@ -21,12 +21,14 @@ document.addEventListener('DOMContentLoaded', function(){
     var ch = Math.floor(canvas.clientHeight);
     canvas.width = cw;
     canvas.height = ch;
-    if (filter=="grayscale" || filter == "scharr"){
+    if (filter=="grayscale" || filter == "scharr" || filter == "sobel"){
       img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8_t | jsfeat.C1_t);
+    }
+    if(filter == "scharr"){
       img_gxgy = new jsfeat.matrix_t(cw, ch, jsfeat.S32C2_t);      
     }
-    else if(filter == "sobel"){
-      img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8C1_t);
+    if(filter == "sobel"){
+      // img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8C1_t);
       img_gxgy = new jsfeat.matrix_t(cw, ch, jsfeat.S32C2_t);
     }
 
@@ -70,6 +72,7 @@ function draw(v,ctx,b_ctx,w,h) {
       }      
     }
     if(filter == "sobel"){
+      jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       jsfeat.imgproc.sobel_derivatives(img_u8, img_gxgy);
       //render result back to canvas
       // render result back to canvas
