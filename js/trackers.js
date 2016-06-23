@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
     video_c.width = cw;
     video_c.height = ch;
 
-    video.addEventListener('play', function(){
+    video.addEventListener('playing', function(){
         draw(this,video_ctx,cw,ch);
     },false);
 
