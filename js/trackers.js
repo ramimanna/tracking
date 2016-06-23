@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var ch = Math.floor(canvas.clientHeight);
     canvas.width = cw;
     canvas.height = ch;
-
+    img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8_t | jsfeat.C1_t);
     video.addEventListener('playing', function(){
         draw(this,canvas_context,back_context,cw,ch);
     },false);
@@ -31,17 +31,33 @@ function draw(v,ctx,b_ctx,w,h) {
     if(v.paused || v.ended) return false;
     b_ctx.drawImage(v,0,0,w,h);
     var image_data = b_ctx.getImageData(0, 0, w, h);
-    var data = image_data.data;
-    for(var i = 0; i < data.length; i+=4) {
-        var r = data[i];
-        var g = data[i+1];
-        var b = data[i+2];
-        var brightness = (3*r+4*g+b)>>>3;
-        data[i] = brightness;
-        data[i+1] = brightness;
-        data[i+2] = brightness;
+
+    //WITH JSFEAT:
+    jsfeat.imgproc.grayscale(imageData.data, 640, 480, img_u8);
+
+    // render result back to canvas
+    var data_u32 = new Uint32Array(imageData.data.buffer);
+    var alpha = (0xff << 24);
+    var i = img_u8.cols*img_u8.rows, pix = 0;
+    while(--i >= 0) {
+        pix = img_u8.data[i];
+        data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
     }
-    image_data.data = data;
+
+
+    //WITH PURE HTML5/JS:
+
+    // var data = image_data.data;
+    // for(var i = 0; i < data.length; i+=4) {
+    //     var r = data[i];
+    //     var g = data[i+1];
+    //     var b = data[i+2];
+    //     var brightness = (3*r+4*g+b)>>>3;
+    //     data[i] = brightness;
+    //     data[i+1] = brightness;
+    //     data[i+2] = brightness;
+    // }
+    // image_data.data = data;
     ctx.putImageData(image_data,0,0,0,0,w,h);
     setTimeout(draw,20,v,ctx,b_ctx,w,h);
 }
