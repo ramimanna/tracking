@@ -16,7 +16,7 @@
     left: 50%;
     margin: -180px 0 0 -240px;
   }
-#myVideo{
+#myVideo,#backingCanvas{
     visibility: hidden;
 	z-index: 0;
 }
