@@ -1,4 +1,4 @@
-  var filter = "scharr";
+  var filter = "sobel";
   var front = document.getElementById("myCanvas");
   var front_ctx = front.getContext("2d");
 
@@ -62,6 +62,19 @@ function draw(v,ctx,b_ctx,w,h) {
           pix = ((gx + gy)>>2)&0xff;
           data_u32[i] = (pix << 24) | (gx << 16) | (0 << 8) | gy;
       }      
+    }
+    if(filter == "sobel"){
+      jsfeat.imgproc.sobel_derivatives(img_u8, img_gxgy);
+      //render result back to canvas
+      var data_u32 = new Uint32Array(image_data.data.buffer);
+      var alpha = (0xff << 24);
+      var i = img_u8.cols*img_u8.rows, pix=0, gx = 0, gy = 0;
+      while(--i >= 0) {
+          gx = Math.abs(img_gxgy.data[i<<1]>>2)&0xff;
+          gy = Math.abs(img_gxgy.data[(i<<1)+1]>>2)&0xff;
+          pix = ((gx + gy)>>2)&0xff;
+          data_u32[i] = (pix << 24) | (gx << 16) | (0 << 8) | gy;
+      } 
     }
 
 
