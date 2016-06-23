@@ -33,7 +33,7 @@
     if(event.data.length === 0) {
     } else {
       event.data.forEach(function(rect){
-        my_ctx.clearRect(0,0,c.width,c.height);
+        my_ctx.clearRect(0,0,my_c.width,my_c.height);
         my_my_ctx.beginPath();
         my_ctx.strokeRect(rect.x,rect.y,rect.width,rect.height);
         my_ctx.stroke();        
