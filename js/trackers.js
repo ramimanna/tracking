@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function draw(v,ctx,w,h) {
     if(v.paused || v.ended) return false;
-    var image_data = video_ctx.getImageData(0, 0, cw, ch);
+    var image_data = video_ctx.getImageData(0, 0, w, h);
     var data = image_data.data;
     for(var i = 0; i < data.length; i+=4) {
         var r = data[i];
