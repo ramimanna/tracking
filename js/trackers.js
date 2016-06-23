@@ -37,6 +37,7 @@ function draw(v,ctx,b_ctx,w,h) {
     //WITH JSFEAT:
     jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
     jsfeat.imgproc.scharr_derivatives(img_u8, img_gxgy);
+    jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
 
     // GRAYSCALE:render result back to canvas
     // var data_u32 = new Uint32Array(image_data.data.buffer);
