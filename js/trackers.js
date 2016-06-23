@@ -27,18 +27,18 @@ document.addEventListener('DOMContentLoaded', function(){
 function draw(v,ctx,w,h) {
     if(v.paused || v.ended) return false;
     var image_data = video_ctx.getImageData(0, 0, w, h);
-    var data = image_data.data;
-    for(var i = 0; i < data.length; i+=4) {
-        var r = data[i];
-        var g = data[i+1];
-        var b = data[i+2];
-        var brightness = (3*r+4*g+b)>>>3;
-        data[i] = brightness;
-        data[i+1] = brightness;
-        data[i+2] = brightness;
-    }
-    image_data.data = data;
-    ctx.putImageData(image_data,0,0);
+    // var data = image_data.data;
+    // for(var i = 0; i < data.length; i+=4) {
+    //     var r = data[i];
+    //     var g = data[i+1];
+    //     var b = data[i+2];
+    //     var brightness = (3*r+4*g+b)>>>3;
+    //     data[i] = brightness;
+    //     data[i+1] = brightness;
+    //     data[i+2] = brightness;
+    // }
+    // image_data.data = data;
+    ctx.drawImage(image_data,0,0);
     setTimeout(draw,20,v,ctx,w,h);
 }
 
