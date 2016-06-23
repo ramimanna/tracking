@@ -48,7 +48,7 @@ function draw(v,ctx,b_ctx,w,h) {
     // }
 
     // SCHARR:render result back to canvas
-    var data_u32 = new Uint32Array(imageData.data.buffer);
+    var data_u32 = new Uint32Array(image_data.data.buffer);
     var alpha = (0xff << 24);
     var i = img_u8.cols*img_u8.rows, pix=0, gx = 0, gy = 0;
     while(--i >= 0) {
