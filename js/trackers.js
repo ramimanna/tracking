@@ -38,7 +38,7 @@ function draw(v,ctx,w,h) {
     //     data[i+2] = brightness;
     // }
     // image_data.data = data;
-    ctx.putImageData(image_data,0,0,w,h);
+    ctx.putImageData(image_data,0,0,0,0,w,h);
     setTimeout(draw,20,v,ctx,w,h);
 }
 
