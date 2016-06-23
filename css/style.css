@@ -31,7 +31,7 @@ body{
 	background-color:#222222;
 }
 
-#myVideo, #myCanvas
+#myVideo, #myCanvas, #videoCanvas
 {
     transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
