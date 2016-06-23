@@ -2,7 +2,15 @@
 #feed {
     display: none;
 }
-#myVideo, #myCanvas {
+
+#myVideo {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    margin: -180px 0 0 -240px;
+  }
+
+#myCanvas,#videoCanvas {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -13,6 +21,10 @@
 }
 #myCanvas{
 	z-index: 1;
+}
+
+#videoCanvas{
+    z-index: 0;
 }
 
 body{
