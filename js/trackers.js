@@ -4,7 +4,7 @@
   var video = document.getElementById("myVideo");
 
   var back = document.getElementById("backingCanvas");
-  var back_context = bc.getContext("2d");
+  var back_context = back.getContext("2d");
 
   var canvas = document.getElementById("videoCanvas");
   var canvas_context = canvas.getContext("2d");
