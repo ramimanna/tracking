@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function(){
     // var canvas = document.getElementById('c');
     // var context = canvas.getContext('2d');
 
-    var cw = Math.floor(video_c.clientWidth / 100);
-    var ch = Math.floor(video_c.clientHeight / 100);
+    var cw = Math.floor(video_c.clientWidth);
+    var ch = Math.floor(video_c.clientHeight);
     video_c.width = cw;
     video_c.height = ch;
 
