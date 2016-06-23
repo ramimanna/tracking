@@ -1,8 +1,8 @@
   var my_c = document.getElementById("myCanvas");
-  var my_ctx = c.getContext("2d");
+  var my_ctx = my_c.getContext("2d");
 
   var video_c = document.getElementById("videoCanvas");
-  var video_ctx = c.getContext("2d");
+  var video_ctx = video_c.getContext("2d");
   video_ctx.drawImage(video, 0, 0, 400, 300);
   var image_data = video_ctx.getImageData(0, 0, 400, 300);
   // var tacking_canvas = new Canvas();
