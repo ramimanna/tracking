@@ -3,7 +3,7 @@
 
   var video_c = document.getElementById("videoCanvas");
   var video_ctx = video_c.getContext("2d");
-  video_ctx.drawImage(video, 0, 0, 400, 300);
+  video_ctx.drawImage("myVideo", 0, 0, 400, 300);
   var image_data = video_ctx.getImageData(0, 0, 400, 300);
   // var tacking_canvas = new Canvas();
   
