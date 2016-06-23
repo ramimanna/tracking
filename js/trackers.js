@@ -66,13 +66,14 @@ function draw(v,ctx,b_ctx,w,h) {
     if(filter == "sobel"){
       jsfeat.imgproc.sobel_derivatives(img_u8, img_gxgy);
       //render result back to canvas
-      var data_u32 = new Uint32Array(image_data.data.buffer);
+      // render result back to canvas
+      var data_u32 = new Uint32Array(imageData.data.buffer);
       var alpha = (0xff << 24);
       var i = img_u8.cols*img_u8.rows, pix=0, gx = 0, gy = 0;
       while(--i >= 0) {
           gx = Math.abs(img_gxgy.data[i<<1]>>2)&0xff;
           gy = Math.abs(img_gxgy.data[(i<<1)+1]>>2)&0xff;
-          pix = ((gx + gy)>>2)&0xff;
+          pix = ((gx + gy)>>1)&0xff;
           data_u32[i] = (pix << 24) | (gx << 16) | (0 << 8) | gy;
       } 
     }
