@@ -40,7 +40,7 @@ function draw(v,ctx,b_ctx,w,h) {
     //GRAYSCALE 
     if(filter == "grayscale"){
       jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
-      render result back to canvas
+      //render result back to canvas
       var data_u32 = new Uint32Array(image_data.data.buffer);
       var alpha = (0xff << 24);
       var i = img_u8.cols*img_u8.rows, pix = 0;
