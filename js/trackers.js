@@ -5,8 +5,31 @@
 
   var video_c = document.getElementById("videoCanvas");
   var video_ctx = video_c.getContext("2d");
-  video_ctx.drawImage(video, 0, 0, 400, 300);
-  var image_data = video_ctx.getImageData(0, 0, 400, 300);
+  // video_ctx.drawImage(video, 0, 0, 400, 300);
+  // var image_data = video_ctx.getImageData(0, 0, 400, 300);
+
+document.addEventListener('DOMContentLoaded', function(){
+    // var v = document.getElementById('v');
+    // var canvas = document.getElementById('c');
+    // var context = canvas.getContext('2d');
+
+    var cw = Math.floor(video_c.clientWidth / 100);
+    var ch = Math.floor(video_c.clientHeight / 100);
+    video_c.width = cw;
+    video_c.height = ch;
+
+    video.addEventListener('play', function(){
+        draw(this,video_ctx,cw,ch);
+    },false);
+
+},false);
+
+function draw(v,c,w,h) {
+    if(v.paused || v.ended) return false;
+    c.drawImage(v,0,0,w,h);
+    setTimeout(draw,20,v,c,w,h);
+}
+
   // var tacking_canvas = new Canvas();
   
   //---------------------------------------------------------------------//      
