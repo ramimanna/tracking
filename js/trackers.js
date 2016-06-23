@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function(){
     canvas.width = cw;
     canvas.height = ch;
     img_u8 = new jsfeat.matrix_t(cw, ch, jsfeat.U8_t | jsfeat.C1_t);
+    img_gxgy = new jsfeat.matrix_t(cw, ch, jsfeat.S32C2_t);
+
     video.addEventListener('playing', function(){
         draw(this,canvas_context,back_context,cw,ch);
     },false);
@@ -33,7 +35,8 @@ function draw(v,ctx,b_ctx,w,h) {
     var image_data = b_ctx.getImageData(0, 0, w, h);
 
     //WITH JSFEAT:
-    jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
+    //jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
+    jsfeat.imgproc.scharr_derivatives(img_u8, img_gxgy);
 
     // render result back to canvas
     var data_u32 = new Uint32Array(image_data.data.buffer);
