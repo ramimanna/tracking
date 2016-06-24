@@ -93,7 +93,7 @@ function draw(v,ctx,b_ctx,w,h) {
     if(detector == "face"){
 
     }
-}
+
 
     //WITH PURE HTML5/JS:
 
