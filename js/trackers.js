@@ -41,23 +41,24 @@ function draw(v,ctx,b_ctx,w,h) {
     if(v.paused || v.ended) return false;
     b_ctx.drawImage(v,0,0,w,h);
     var image_data = b_ctx.getImageData(0, 0, w, h);
-    console.log(image_data.data[0]);
+    console.log(image_data.data);
 
     //WITH JSFEAT:
     
     //GRAYSCALE 
     if(filter == "grayscale"){
       tracking.Image.grayscale(image_data.data, w, h, false,image_data.data);
-      console.log(image_data.data[0]);
+      console.log(image_data.data);
+      return;
       
       // jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       //render result back to canvas
-      var data_u32 = new Uint32Array(image_data.data.buffer);
-      var alpha = (0xff << 24);
-      var i = img_u8.cols*img_u8.rows, pix = 0;
-      while(--i >= 0) {
-        pix = img_u8.data[i];
-        data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
+      // var data_u32 = new Uint32Array(image_data.data.buffer);
+      // var alpha = (0xff << 24);
+      // var i = img_u8.cols*img_u8.rows, pix = 0;
+      // while(--i >= 0) {
+      //   pix = img_u8.data[i];
+      //   data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
       }
     }
 
