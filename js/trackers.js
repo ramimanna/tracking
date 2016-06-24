@@ -47,7 +47,7 @@ function draw(v,ctx,b_ctx,w,h) {
     
     //GRAYSCALE 
     if(filter == "grayscale"){
-      image_data.data = tracking.Image.grayscale(image_data.data, w, h, true);
+      tracking.Image.sobel(image_data.data, w, h);
       console.log(image_data.data);
       return;
       
