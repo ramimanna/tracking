@@ -1,4 +1,4 @@
-  var filter = "sobel";
+  var filter = "grayscale";
   var front = document.getElementById("myCanvas");
   var front_ctx = front.getContext("2d");
 
