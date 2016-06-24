@@ -59,7 +59,7 @@ function draw(v,ctx,b_ctx,w,h) {
       // while(--i >= 0) {
       //   pix = img_u8.data[i];
       //   data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
-      }
+      //}
     }
 
     if(filter == "scharr"){
