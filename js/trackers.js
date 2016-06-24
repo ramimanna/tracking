@@ -47,8 +47,8 @@ function draw(v,ctx,b_ctx,w,h) {
     
     //GRAYSCALE 
     if(filter == "grayscale"){
-      tracking.Image.sobel(image_data.data, w, h);
-      console.log(image_data.data);
+      new_image = tracking.Image.sobel(image_data.data, w, h);
+      console.log(new_image);
       return;
       
       // jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
