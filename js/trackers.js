@@ -47,7 +47,7 @@ function draw(v,ctx,b_ctx,w,h) {
     
     //GRAYSCALE 
     if(filter == "grayscale"){
-      tracking.Image.grayscale(image_data.data, w, h, true);
+      tracking.Image.grayscale(image_data.data, w, h, false);
       console.log(image_data.data[0]);
       
       // jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
