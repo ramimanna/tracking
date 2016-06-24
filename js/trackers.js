@@ -1,5 +1,4 @@
-  var filter = "grayscale";
-  var detector = "face";
+  var filter = "sobel";
   var front = document.getElementById("myCanvas");
   var front_ctx = front.getContext("2d");
 
@@ -41,27 +40,21 @@ function draw(v,ctx,b_ctx,w,h) {
     if(v.paused || v.ended) return false;
     b_ctx.drawImage(v,0,0,w,h);
     var image_data = b_ctx.getImageData(0, 0, w, h);
-    console.log(image_data.data);
 
     //WITH JSFEAT:
     
     //GRAYSCALE 
     if(filter == "grayscale"){
-      new_image = tracking.Image.sobel(image_data.data, w, h);
-      console.log(new_image);
-      return;
-      
-      // jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
+      jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       //render result back to canvas
-      // var data_u32 = new Uint32Array(image_data.data.buffer);
-      // var alpha = (0xff << 24);
-      // var i = img_u8.cols*img_u8.rows, pix = 0;
-      // while(--i >= 0) {
-      //   pix = img_u8.data[i];
-      //   data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
-      //}
+      var data_u32 = new Uint32Array(image_data.data.buffer);
+      var alpha = (0xff << 24);
+      var i = img_u8.cols*img_u8.rows, pix = 0;
+      while(--i >= 0) {
+        pix = img_u8.data[i];
+        data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
+      }
     }
-
     if(filter == "scharr"){
       jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       jsfeat.imgproc.scharr_derivatives(img_u8, img_gxgy);
@@ -80,6 +73,7 @@ function draw(v,ctx,b_ctx,w,h) {
       jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       jsfeat.imgproc.sobel_derivatives(img_u8, img_gxgy);
       //render result back to canvas
+      // render result back to canvas
       var data_u32 = new Uint32Array(image_data.data.buffer);
       var alpha = (0xff << 24);
       var i = img_u8.cols*img_u8.rows, pix=0, gx = 0, gy = 0;
@@ -89,13 +83,6 @@ function draw(v,ctx,b_ctx,w,h) {
           pix = ((gx + gy)>>1)&0xff;
           data_u32[i] = (pix << 24) | (gx << 16) | (0 << 8) | gy;
       } 
-    }
-    if(filter == "gaussian"){
-      jsfeat.imgproc.gaussian_blur(img_u8, img_u8, 3);
-      //TODO: render result back to canvas
-    }
-    if(detector == "face"){
-
     }
 
 
@@ -131,8 +118,6 @@ function draw(v,ctx,b_ctx,w,h) {
   //     });
   //   }
   // });
-
-
   front_ctx.lineWidth="1";
   front_ctx.strokeStyle="purple";
   var face_tracker = new tracking.ObjectTracker("face");
