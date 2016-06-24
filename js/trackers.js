@@ -57,6 +57,7 @@ function draw(v,ctx,b_ctx,w,h) {
         pix = img_u8.data[i];
         data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
       }
+    }
 
     if(filter == "scharr"){
       jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
