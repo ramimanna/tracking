@@ -139,4 +139,4 @@ function draw(v,ctx,b_ctx,w,h) {
     }
   });
 
-  tracking.track('#myVideo', face_tracker);
+  // tracking.track('#myVideo', face_tracker);
