@@ -49,13 +49,13 @@ function draw(v,ctx,b_ctx,w,h) {
       tracking.Image.grayscale(image_data.data, w, h, true);
       
       // jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
-      // //render result back to canvas
-      // var data_u32 = new Uint32Array(image_data.data.buffer);
-      // var alpha = (0xff << 24);
-      // var i = img_u8.cols*img_u8.rows, pix = 0;
-      // while(--i >= 0) {
-      //   pix = img_u8.data[i];
-      //   data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
+      //render result back to canvas
+      var data_u32 = new Uint32Array(image_data.data.buffer);
+      var alpha = (0xff << 24);
+      var i = img_u8.cols*img_u8.rows, pix = 0;
+      while(--i >= 0) {
+        pix = img_u8.data[i];
+        data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
       }
 
     if(filter == "scharr"){
