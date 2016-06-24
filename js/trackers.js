@@ -9,8 +9,6 @@
 
   var canvas = document.getElementById("videoCanvas");
   var canvas_context = canvas.getContext("2d");
-  // canvas_context.drawImage(video, 0, 0, 400, 300);
-  // var image_data = canvas_context.getImageData(0, 0, 400, 300);
 
 document.addEventListener('DOMContentLoaded', function(){
     // var v = document.getElementById('v');
