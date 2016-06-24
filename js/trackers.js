@@ -41,12 +41,14 @@ function draw(v,ctx,b_ctx,w,h) {
     if(v.paused || v.ended) return false;
     b_ctx.drawImage(v,0,0,w,h);
     var image_data = b_ctx.getImageData(0, 0, w, h);
+    console.log(image_data.data[0]);
 
     //WITH JSFEAT:
     
     //GRAYSCALE 
     if(filter == "grayscale"){
       tracking.Image.grayscale(image_data.data, w, h, true);
+      console.log(image_data.data[0]);
       
       // jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       //render result back to canvas
