@@ -45,6 +45,7 @@ function draw(v,ctx,b_ctx,w,h) {
     
     //GRAYSCALE 
     if(filter == "grayscale"){
+
       jsfeat.imgproc.grayscale(image_data.data, w, h, img_u8);
       //render result back to canvas
       var data_u32 = new Uint32Array(image_data.data.buffer);
@@ -52,7 +53,7 @@ function draw(v,ctx,b_ctx,w,h) {
       var i = img_u8.cols*img_u8.rows, pix = 0;
       while(--i >= 0) {
         pix = img_u8.data[i];
-        data_u32[i] = alpha | (pix << 16) | (pix << 8) | pix;
+        data_u32[i] = alpha | (pix/2 << 16) | (pix << 8) | pix;
       }
     }
     if(filter == "scharr"){
